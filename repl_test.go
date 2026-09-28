@@ -44,3 +44,6 @@ func TestCleanInput(t *testing.T) {
 		}
 	}
 }
+
+func TestCommandRegistry(t *testing.T) {
+}
