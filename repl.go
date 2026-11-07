@@ -1,6 +1,11 @@
 package main
 
-import ("strings")
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
 
 func cleanInput(text string) []string {
 	rawWords := strings.Split(text, " ")
@@ -11,4 +16,17 @@ func cleanInput(text string) []string {
 		}
 	}
 	return cleanWords
+}
+
+func startRepl() {
+	scanner := bufio.NewScanner(os.Stdin)
+	for {
+		fmt.Print("Pokedex > ")
+		scanner.Scan()
+		if err := scanner.Err(); err != nil {
+			fmt.Fprintln(os.Stderr, "there is a weird mistake here")
+		}
+		userInput := scanner.Text()
+		fmt.Printf("Your command was %s\n", cleanInput(userInput)[0])
+	}
 }
